@@ -1,0 +1,28 @@
+# Site settings
+title: "My Personal Webpage"
+description: "A personal blog and webpage"
+author: "lrast"
+url: "https://lrast.github.io"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Using custom layouts (no theme)
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .gitignore
+  - readme.md
+
