@@ -1,9 +1,8 @@
 ---
 layout: default
-title: About
+title: Home
 ---
 
 # About
 
 This is my personal webpage and blog.
-

@@ -1,5 +1,5 @@
 # Site settings
-title: "My Personal Webpage"
+title: "Luke Rast"
 description: "A personal blog and webpage"
 author: "lrast"
 url: "https://lrast.github.io"
@@ -13,6 +13,14 @@ plugins:
   - jekyll-sitemap
 
 # Using custom layouts (no theme)
+
+# Defaults for pages
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
 
 # Exclude from processing
 exclude:

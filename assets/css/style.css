@@ -166,6 +166,27 @@ body {
   text-decoration: underline;
 }
 
+.post-tags {
+  margin-left: 1rem;
+}
+
+.post-tags .tag {
+  display: inline-block;
+  background-color: #f0f0f0;
+  color: #555;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  font-size: 0.85rem;
+  margin-right: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.post-list .post-tags {
+  margin-left: 0;
+  margin-top: 0.5rem;
+  display: block;
+}
+
 .post-content {
   font-size: 1.1rem;
   line-height: 1.8;

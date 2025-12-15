@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: Posts
 ---
 
 <div class="home">
@@ -13,6 +13,13 @@ title: Home
           <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
         </h2>
         <span class="post-meta">{{ post.date | date: "%B %d, %Y" }}</span>
+        {% if post.tags.size > 0 %}
+          <span class="post-tags">
+            {% for tag in post.tags %}
+              <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </span>
+        {% endif %}
         {% if post.excerpt %}
           <div class="post-excerpt">
             {{ post.excerpt }}
@@ -22,5 +29,6 @@ title: Home
     {% endfor %}
   </ul>
 
-  <p class="rss-subscribe">subscribe <a href="{{ '/feed.xml' | relative_url }}">via RSS</a></p>
+  <!-- <p class="rss-subscribe">subscribe <a href="{{ '/feed.xml' | relative_url }}">via RSS</a></p>
+  -->
 </div>
