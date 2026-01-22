@@ -5,4 +5,4 @@ title: Home
 
 # About
 
-This is my personal webpage and blog.
+Lab notebooks and blog posts.
