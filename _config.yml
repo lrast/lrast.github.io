@@ -12,6 +12,9 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
+kramdown:
+  math_engine: mathjax
+
 # Using custom layouts (no theme)
 
 # Defaults for pages

@@ -50,7 +50,8 @@ I will survey each of these problems in turn in future posts.
 
 
 ## Related
-- Fitting Finite Automata 
-- Inverse Optimization Problems
-- Inverse Reinforcement Learning
+
+- [Fitting Finite Automata]({% post_url 2026-03-09-finite_automata %})
+- [Inverse Optimization Problems]({% post_url 2026-03-09-inverse_optimization%})
+- [Inverse Reinforcement Learning]({% post_url 2026-03-09-inverse_RL%})
 
