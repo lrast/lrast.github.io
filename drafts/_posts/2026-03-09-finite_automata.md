@@ -42,33 +42,33 @@ This means that the machine can 'hide' combinatorial complexity in the internal 
 Active learning allows us to perform more specific probes of the internal state dynamics.
 For this reason, the above results do not extend to models with in-built stochasticity and (optionally) random outputs, like hidden Markov models, and their direct analogs, called 'Probabilistic Deterministic Finite Automata' (because they randomly transition between single states).
 Stochasticity interrupts the models' ability to hide complexity, but at the same time makes the overall computations done more difficult.
-This is show in[^6]: the _sample complexity_ of learning such models is polynomial in the size, but the _time complexity_ of the _computations_ to recover the model parameters is exponential in the size of the alphabet (under $ P \ne NP$).
+This is show in[^6]: the _sample complexity_ of learning such models is polynomial in the size, but the _time complexity_ of the _computations_ to recover the model parameters is exponential in the size of the alphabet, reducing to an NP problem.
 Later work showed that, enforcing 'distinguishability' of states (so their transition distributions are 'different enough') allows computational complexity to be polynomial as well, including in distinguishability.
 See [^7] for an overview of these ideas.
 
-Note that these results do not involve active learning, which is not longer necessary in the stochastic case.
-In fact, the HMM model does not usually include inputs.
-For Markov inputs, these are simple to include in a PAC setting by extending the state to include inputs whose transitions are set by the environment distribution.
-These are directions to look into in the literature: are we able to achieve improvements in the size scaling with active learning approaches?
-What about with modifications to the HMM itself?
-
-
-
+Note that these results do not involve active learning, which is no longer necessary in the stochastic case.
+In fact, we can show that active learning does not provide qualitatively different results.
+Consider an Markov process with $n$ states and $k$ possible inputs.
+This corresponds to $k$ transition matrices of size $n \times n$, which we aim to characterize to within $\epsilon$ as a characterization of the process. 
+If we are able to actively query the next state of the process in a given state after taking a given action, then we can characterize the transition matrices in $O(nk \log n)$ samples:
+For every state, action combination, we need $\log n$ samples to characterize the next-state distribution.
+This bound comes up frequently in the [inverse reinforcement learning problem]({% post_url /drafts/2026-03-20-inverse_RL %}) as a means to characterized the Markov decision process.
+This is a generous active observation process, but the sample requirement remains polynomial.
 
 
 ## References:
 
-[^1]: (Michael J. Kearns, Umesh Vazirani, 1994) An Introduction to Computational Learning Theory
+[^1]: (Kearns & Vazirani, 1994) An Introduction to Computational Learning Theory
 
-[^2]: (M Kearns, L Valiant, 1994) Cryptographic limitations on learning boolean formulae and finite automata
+[^2]: (Kearns & Valiant, 1994) Cryptographic limitations on learning boolean formulae and finite automata
 
 [^3]: (Angluin, 1987) Learning Regular Sets from Queries and Counterexamples
 
 [^4]: (Angluin, 1988) Queries and Concept Learning
 
-[^5]: (Angluin, Kharitonov 1991) When Won’t Membership Queries Help?
+[^5]: (Angluin & Kharitonov 1991) When Won’t Membership Queries Help?
 
-[^6]: (Abe and Warmuth, 1992) On the Computational Complexity of Approximating Distributions by Probabilistic Automata
+[^6]: (Abe & Warmuth, 1992) On the Computational Complexity of Approximating Distributions by Probabilistic Automata
 
-[^7]: (Balle, Castro, Gavaldà 2012) Learning probabilistic automata: A study in state distinguishability
+[^7]: (Balle, Castro & Gavaldà 2012) Learning probabilistic automata: A study in state distinguishability
 
