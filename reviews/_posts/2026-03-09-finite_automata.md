@@ -52,7 +52,7 @@ Consider an Markov process with $n$ states and $k$ possible inputs.
 This corresponds to $k$ transition matrices of size $n \times n$, which we aim to characterize to within $\epsilon$ as a characterization of the process. 
 If we are able to actively query the next state of the process in a given state after taking a given action, then we can characterize the transition matrices in $O(nk \log n)$ samples:
 For every state, action combination, we need $\log n$ samples to characterize the next-state distribution.
-This bound comes up frequently in the [inverse reinforcement learning problem]({% post_url /drafts/2026-03-20-inverse_RL %}) as a means to characterized the Markov decision process.
+This bound comes up frequently in the [inverse reinforcement learning problem]({% post_url /reviews/2026-03-20-inverse_RL %}) as a means to characterized the Markov decision process.
 This is a generous active observation process, but the sample requirement remains polynomial.
 
 

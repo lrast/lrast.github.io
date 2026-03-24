@@ -51,7 +51,7 @@ I will survey each of these problems in turn in future posts.
 
 ## Related
 
-- [Fitting Finite Automata]({% post_url /drafts/2026-03-09-finite_automata %})
+- [Fitting Finite Automata]({% post_url /reviews/2026-03-09-finite_automata %})
 - Inverse Optimization Problems
-- [Inverse Reinforcement Learning]({% post_url /drafts/2026-03-20-inverse_RL %})
+- [Inverse Reinforcement Learning]({% post_url /reviews/2026-03-20-inverse_RL %})
 
