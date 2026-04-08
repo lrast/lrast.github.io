@@ -3,6 +3,6 @@ layout: default
 title: Home
 ---
 
-# About
+# My research journal
 
-Lab notebooks and blog posts.
+Including experimental and theory results, literature reviews, and proposals.
