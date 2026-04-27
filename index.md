@@ -1,8 +1,11 @@
 ---
-layout: default
+layout: index
 title: Home
 ---
 
-# My research journal
+# Home
 
-Including experimental and theory results, literature reviews, and proposals.
+Welcome. Use the navigation above to jump to:
+
+- [Research journal]({{ '/research_journal_home' | relative_url }})
+- [Projects]({{ '/projects' | relative_url }})
