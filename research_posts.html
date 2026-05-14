@@ -1,13 +1,15 @@
 ---
 layout: research
-title: Posts
+title: Research posts
+permalink: /research_posts/
 ---
 
 <div class="home">
-  <h1 class="page-heading">Posts</h1>
+  <h1 class="page-heading">Research posts</h1>
 
   <ul class="post-list">
-    {% for post in site.posts %}
+    {% assign research_posts = site.posts | where: "layout", "research_post" %}
+    {% for post in research_posts %}
       <li>
         <h2>
           <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
