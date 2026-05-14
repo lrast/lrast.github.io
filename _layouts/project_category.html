@@ -20,18 +20,32 @@ layout: projects
   <h1 class="page-heading">Category: {{ category_name | capitalize }}</h1>
   
   {% if category_posts.size > 0 %}
-    <ul class="post-list">
+    <ul class="post-list post-list--with-preview">
       {% for post in category_posts %}
-        <li>
-          <h2>
-            <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-          </h2>
-          <span class="post-meta">{{ post.date | date: "%B %d, %Y" }}</span>
-          {% if post.excerpt %}
-            <div class="post-excerpt">
-              {{ post.excerpt }}
-            </div>
+        {% assign preview_src = post.preview_image | default: post.image %}
+        <li class="post-list-card">
+          {% if preview_src %}
+            <a class="post-preview" href="{{ post.url | relative_url }}" aria-hidden="true" tabindex="-1">
+              <img
+                src="{{ preview_src | relative_url }}"
+                alt=""
+                width="320"
+                height="180"
+                loading="lazy"
+                decoding="async">
+            </a>
           {% endif %}
+          <div class="post-list-card-body">
+            <h2>
+              <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            </h2>
+            <span class="post-meta">{{ post.date | date: "%B %d, %Y" }}</span>
+            {% if post.excerpt %}
+              <div class="post-excerpt">
+                {{ post.excerpt }}
+              </div>
+            {% endif %}
+          </div>
         </li>
       {% endfor %}
     </ul>
