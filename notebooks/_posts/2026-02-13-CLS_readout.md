@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: research_post
 title: "Lab Note: Multiple readouts from ViT models"
 date: 2026-02-13
 tags: [machine learning, lab notebook]

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: research_post
 title: "Theory Note: Three Notions of Distribution Concentration"
 date: 2026-03-30
 tags: [computational models, theory]

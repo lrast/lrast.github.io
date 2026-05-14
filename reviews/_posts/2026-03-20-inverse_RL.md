@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: research_post
 title: "Inverse Reinforcement Learning: Sample Complexity"
 date: 2026-03-20
 tags: [computational models, review, draft outline]

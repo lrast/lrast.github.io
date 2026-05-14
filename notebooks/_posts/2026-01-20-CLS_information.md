@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: research_post
 title: "Lab Note: Early information in ViT CLS tokens is not used"
 date: 2026-01-20
 tags: [machine learning, lab notebook]

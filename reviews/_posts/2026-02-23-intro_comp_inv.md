@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: research_post
 title: "The sample complexity of computational inverse problems: introduction"
 date: 2026-02-23
 tags: [computational models, review]

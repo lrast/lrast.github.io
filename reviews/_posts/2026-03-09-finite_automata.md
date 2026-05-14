@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: research_post
 title: "Fitting Finite Automata: Sample Complexity"
 date: 2026-03-09
 tags: [computational models, review, draft outline]
