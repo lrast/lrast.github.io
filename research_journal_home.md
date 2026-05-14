@@ -8,3 +8,4 @@ permalink: /research_journal_home/
 
 Including experimental and theory results, literature reviews, and proposals.
 
+{% include home_category_scrolls.html mode="research" %}

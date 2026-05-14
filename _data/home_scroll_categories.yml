@@ -1,0 +1,13 @@
+# Used by _includes/home_category_scrolls.html
+research:
+  - slug: notebooks
+    title: Lab notebooks
+    category_url: /categories/notebooks
+  - slug: reviews
+    title: Reviews
+    category_url: /categories/reviews
+
+projects:
+  - slug: demos
+    title: Demos
+    category_url: /categories/demos
