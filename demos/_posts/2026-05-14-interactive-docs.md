@@ -19,7 +19,7 @@ This project is mostly 'plumbing', and mostly vibecoded.
 The web stack runs a flask backend and react frontend, with terminal connection over websockets.
 
 The AI agents are managed using Pydantic AI, enforcing the output format and providing access to very simple (URL validation) tool-calls.
-Other than that, agent is used in an 'open-loop' configuration.
+Other than that, the agent is used in an 'open-loop' configuration.
 We use e2b (e2b.dev) to provide sandboxed terminal instances. In this case the terminal is exposed to the user rather than the agents.
 Finally, as we will address below, we use firecrawl (firecrawl.dev) to extract scrapes of webpages that are not available to be embedded as iframes.
 
@@ -29,8 +29,8 @@ Finally, as we will address below, we use firecrawl (firecrawl.dev) to extract s
 The main challenge that this project faces is limited cross-site availability of some documentation, for example on pypi.org.
 This is limited for a very good reason: imposters could attempt to redirect package installs to their own malicious packages.
 However, it also imposes a challenge for the balance between ground-truth and generated content: ground-truth content may simply not be available, while scrapes, as we perform here, introduce a new source of noise into the displayed documentation.
-This solution is reasonable for the present purposes, but will arise again whenever we want to 'weave' together documents from different sources.
-Likely the most durable solution would be to move from assembling documents in a web-app display to a browser application, with full control over local manipulations.
+This solution is reasonable for the present purposes, but the problem will arise again whenever we want to 'weave' together documents from different sources.
+Likely the most durable solution would be to move from assembling documents in a web-app display to a browser application, giving full control over local manipulations.
 
 
 

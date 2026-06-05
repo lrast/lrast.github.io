@@ -81,10 +81,3 @@ These CLS tokens are at minimum well-behaved for read-outs.
 Where they out-perform random CLS tokens, they can even be argued to contain label-specific information: they out-perform by virtue CLS-image token pairings.
 The failure of randomized readouts of CLS + image token ('augment') to outperform randomized read-outs of image tokens alone ('replace') provides evidence that the information found in CLS tokens is also distributed through the image tokens.
 Finally, it is worth ending on a practical note: with the right CLS token distribution, we can achieve internal readouts with fairly good accuracy, even at layer 8.
-
-
-
-## Related work:
-
-
-See the my next post in this project here.
