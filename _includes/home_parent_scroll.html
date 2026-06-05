@@ -1,0 +1,63 @@
+{% assign mode = include.mode %}
+{% if mode == 'research' %}
+  {% assign post_layout = 'research_post' %}
+  {% assign feed_posts = site.posts | where: 'layout', post_layout %}
+  {% assign more_url = include.more_url | default: '/research_posts' %}
+  {% assign more_label = include.more_label | default: 'All posts' %}
+{% elsif mode == 'projects' %}
+  {% assign post_layout = 'project_post' %}
+  {% assign feed_posts = site.posts | where: 'layout', post_layout %}
+  {% assign more_url = include.more_url | default: '/projects' %}
+  {% assign more_label = include.more_label | default: 'All projects' %}
+{% else %}
+  {% assign feed_posts = nil %}
+{% endif %}
+
+{% if feed_posts %}
+<div class="home-parent-scroll">
+  <div class="home-parent-scroll-heading">
+    <a class="home-cat-more" href="{{ more_url | relative_url }}">{{ more_label | escape }}</a>
+  </div>
+
+  {% if feed_posts.size > 0 %}
+    <div class="home-cat-scroll" tabindex="0">
+      <ul class="home-scroll-list">
+        {% for post in feed_posts %}
+          <li class="home-scroll-item{% if post_layout == 'project_post' %} home-scroll-item--project{% endif %}">
+            {% if post_layout == 'project_post' %}
+              {% assign preview_src = post.preview_image | default: post.image %}
+              {% if preview_src %}
+                <a class="home-scroll-preview" href="{{ post.url | relative_url }}" aria-hidden="true" tabindex="-1">
+                  <img
+                    src="{{ preview_src | relative_url }}"
+                    alt=""
+                    width="96"
+                    height="54"
+                    loading="lazy"
+                    decoding="async">
+                </a>
+              {% endif %}
+            {% endif %}
+            <div class="home-scroll-item-body">
+              <a class="home-scroll-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+              <span class="home-scroll-meta">
+                {% if post_layout == 'research_post' and post.categories.size > 0 %}
+                  {% assign cat = post.categories.first %}
+                  <a class="home-scroll-category" href="{{ '/categories/' | append: cat | relative_url }}">{{ cat | capitalize }}</a>
+                  <span class="home-scroll-meta-sep" aria-hidden="true">·</span>
+                {% endif %}
+                {{ post.date | date: '%B %d, %Y' }}
+              </span>
+              {% if post.excerpt %}
+                <div class="home-scroll-excerpt">{{ post.excerpt }}</div>
+              {% endif %}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% else %}
+    <p class="home-cat-empty">No posts yet.</p>
+  {% endif %}
+</div>
+{% endif %}

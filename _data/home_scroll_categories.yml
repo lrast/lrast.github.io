@@ -6,6 +6,9 @@ research:
   - slug: reviews
     title: Reviews
     category_url: /categories/reviews
+  - slug: proposals
+    title: Proposals
+    category_url: /categories/proposals
 
 projects:
   - slug: demos
