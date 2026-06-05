@@ -1,14 +1,14 @@
-# Used by _includes/home_category_scrolls.html
+# Used by _includes/home_category_feeds.html
 research:
+  - slug: proposals
+    title: Proposals
+    category_url: /categories/proposals
   - slug: notebooks
     title: Lab notebooks
     category_url: /categories/notebooks
   - slug: reviews
     title: Reviews
     category_url: /categories/reviews
-  - slug: proposals
-    title: Proposals
-    category_url: /categories/proposals
 
 projects:
   - slug: demos

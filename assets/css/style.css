@@ -66,7 +66,7 @@ body {
   padding: 0 1rem;
 }
 
-/* Site index (index.md): section dividers */
+/* Site index (index.md): collapsible sections */
 .index-home h1 {
   font-size: 2rem;
   margin: 0 0 0.25rem;
@@ -74,65 +74,103 @@ body {
   border-bottom: 1px solid #e8e8e8;
 }
 
-.index-home h2 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 1.5rem 0 0.35rem;
-  line-height: 1.35;
-}
-
-.index-home h2:first-of-type {
+.index-section-block {
   margin-top: 1.5rem;
 }
 
-.index-home h2:not(:first-of-type) {
+.index-section-block + .index-section-block {
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid #e8e8e8;
 }
 
-.index-home h2 a {
+.index-section-toggle {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.index-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 0.35rem;
+}
+
+.index-section-chevron {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: 0;
+}
+
+.index-section-chevron-icon {
+  display: block;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-right: 3px solid #555;
+  border-bottom: 3px solid #555;
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease, margin 0.2s ease;
+  margin-top: -0.2rem;
+}
+
+.index-section-toggle:checked ~ .index-section-header .index-section-chevron-icon {
+  transform: rotate(45deg);
+  margin-top: 0.15rem;
+}
+
+.index-section-chevron:hover .index-section-chevron-icon {
+  border-color: #333;
+}
+
+.index-section-link {
   color: #333;
   text-decoration: none;
 }
 
-.index-home h2 a:hover {
+.index-section-link:hover {
   color: #0066cc;
 }
 
-.index-home p {
-  margin: 0;
+.index-section-description {
+  margin: 0 0 0.75rem;
   color: #555;
   line-height: 1.65;
-  max-width: 42rem;
 }
 
-.index-home .home-parent-scroll {
-  margin-top: 1rem;
-  max-width: 42rem;
+.index-section-toggle:not(:checked) ~ .index-section-posts {
+  display: none;
 }
 
-.home-parent-scroll-heading {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 0.5rem;
+.index-home .home-parent-feed {
+  margin-top: 0;
 }
 
-.home-scroll-category {
+.home-feed-category {
   color: #0066cc;
   text-decoration: none;
 }
 
-.home-scroll-category:hover {
+.home-feed-category:hover {
   text-decoration: underline;
 }
 
-.home-scroll-meta-sep {
+.home-feed-meta-sep {
   margin: 0 0.35rem;
 }
 
-/* Home page: scrollable posts by category (research + projects) */
-.home-category-scrolls {
+/* Home page: category post feeds (research + projects) */
+.home-category-feeds {
   margin-top: 2.5rem;
   padding-top: 2rem;
   border-top: 1px solid #e8e8e8;
@@ -146,18 +184,10 @@ body {
   margin-bottom: 0;
 }
 
-.home-cat-section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
-
 .home-cat-title {
   font-size: 1.2rem;
   font-weight: 600;
-  margin: 0;
+  margin: 0 0 0.5rem;
 }
 
 .home-cat-title a {
@@ -169,57 +199,43 @@ body {
   color: #0066cc;
 }
 
-.home-cat-more {
-  flex-shrink: 0;
-  font-size: 0.85rem;
-  color: #0066cc;
-  text-decoration: none;
-}
-
-.home-cat-more:hover {
-  text-decoration: underline;
-}
-
 .home-cat-empty {
   color: #666;
   font-size: 0.95rem;
   margin: 0;
 }
 
-.home-cat-scroll {
-  max-height: 54rem;
-  overflow-y: auto;
-  overscroll-behavior: contain;
+.home-cat-feed {
+  width: 100%;
   border: 1px solid #e8e8e8;
   border-radius: 8px;
   background: #fafafa;
-  -webkit-overflow-scrolling: touch;
 }
 
-.home-scroll-list {
+.home-feed-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.home-scroll-item {
+.home-feed-item {
   padding: 0.65rem 1rem;
   border-bottom: 1px solid #e8e8e8;
   background: #fff;
 }
 
-.home-scroll-item:last-child {
+.home-feed-item:last-child {
   border-bottom: none;
 }
 
-.home-scroll-item--project {
+.home-feed-item--project {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 0.75rem;
 }
 
-.home-scroll-preview {
+.home-feed-preview {
   flex-shrink: 0;
   display: block;
   width: 96px;
@@ -230,7 +246,7 @@ body {
   line-height: 0;
 }
 
-.home-scroll-preview img {
+.home-feed-preview img {
   width: 100%;
   height: auto;
   aspect-ratio: 16 / 9;
@@ -238,16 +254,16 @@ body {
   display: block;
 }
 
-.home-scroll-preview:hover {
+.home-feed-preview:hover {
   border-color: #c8d8ec;
 }
 
-.home-scroll-item-body {
+.home-feed-item-body {
   flex: 1;
   min-width: 0;
 }
 
-.home-scroll-link {
+.home-feed-link {
   display: block;
   font-size: 1.05rem;
   font-weight: 600;
@@ -256,18 +272,18 @@ body {
   line-height: 1.35;
 }
 
-.home-scroll-link:hover {
+.home-feed-link:hover {
   color: #0066cc;
 }
 
-.home-scroll-meta {
+.home-feed-meta {
   display: block;
   font-size: 0.8rem;
   color: #666;
   margin-top: 0.2rem;
 }
 
-.home-scroll-excerpt {
+.home-feed-excerpt {
   margin-top: 0.35rem;
   font-size: 0.85rem;
   color: #555;
@@ -279,12 +295,17 @@ body {
   overflow: hidden;
 }
 
+.index-home .home-feed-excerpt {
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
 @media (max-width: 600px) {
-  .home-scroll-item--project {
+  .home-feed-item--project {
     flex-direction: column;
   }
 
-  .home-scroll-preview {
+  .home-feed-preview {
     width: 100%;
     max-width: 200px;
   }

@@ -1,0 +1,73 @@
+{% assign mode = include.mode %}
+{% if mode == 'research' %}
+  {% assign post_layout = 'research_post' %}
+  {% assign feed_posts = site.posts | where: 'layout', post_layout %}
+{% elsif mode == 'projects' %}
+  {% assign post_layout = 'project_post' %}
+  {% assign feed_posts = site.posts | where: 'layout', post_layout %}
+{% else %}
+  {% assign feed_posts = nil %}
+{% endif %}
+
+<div class="index-section-block">
+  <input
+    type="checkbox"
+    id="{{ include.section_id }}"
+    class="index-section-toggle"
+    {% unless include.closed %}checked{% endunless %}>
+  <div class="index-section-header">
+    <label for="{{ include.section_id }}" class="index-section-chevron" aria-label="Toggle posts">
+      <span class="index-section-chevron-icon" aria-hidden="true"></span>
+    </label>
+    <a class="index-section-link" href="{{ include.url | relative_url }}">{{ include.title | escape }}</a>
+  </div>
+  {% if include.description %}
+    <p class="index-section-description">{{ include.description | escape }}</p>
+  {% endif %}
+  <div class="index-section-posts">
+    {% if feed_posts %}
+      <div class="home-parent-feed">
+        {% if feed_posts.size > 0 %}
+          <div class="home-cat-feed">
+            <ul class="home-feed-list">
+              {% for post in feed_posts %}
+                <li class="home-feed-item{% if post_layout == 'project_post' %} home-feed-item--project{% endif %}">
+                  {% if post_layout == 'project_post' %}
+                    {% assign preview_src = post.preview_image | default: post.image %}
+                    {% if preview_src %}
+                      <a class="home-feed-preview" href="{{ post.url | relative_url }}" aria-hidden="true" tabindex="-1">
+                        <img
+                          src="{{ preview_src | relative_url }}"
+                          alt=""
+                          width="96"
+                          height="54"
+                          loading="lazy"
+                          decoding="async">
+                      </a>
+                    {% endif %}
+                  {% endif %}
+                  <div class="home-feed-item-body">
+                    <a class="home-feed-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+                    <span class="home-feed-meta">
+                      {% if post_layout == 'research_post' and post.categories.size > 0 %}
+                        {% assign cat = post.categories.first %}
+                        <a class="home-feed-category" href="{{ '/categories/' | append: cat | relative_url }}">{{ cat | capitalize }}</a>
+                        <span class="home-feed-meta-sep" aria-hidden="true">·</span>
+                      {% endif %}
+                      {{ post.date | date: '%B %d, %Y' }}
+                    </span>
+                    {% if post.excerpt %}
+                      <div class="home-feed-excerpt">{{ post.excerpt }}</div>
+                    {% endif %}
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% else %}
+          <p class="home-cat-empty">No posts yet.</p>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>

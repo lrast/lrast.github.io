@@ -1,16 +1,16 @@
 {% assign mode = include.mode %}
 {% if mode == 'research' %}
   {% assign post_layout = 'research_post' %}
-  {% assign cat_blocks = site.data.home_scroll_categories.research %}
+  {% assign cat_blocks = site.data.home_feed_categories.research %}
 {% elsif mode == 'projects' %}
   {% assign post_layout = 'project_post' %}
-  {% assign cat_blocks = site.data.home_scroll_categories.projects %}
+  {% assign cat_blocks = site.data.home_feed_categories.projects %}
 {% else %}
   {% assign cat_blocks = nil %}
 {% endif %}
 
 {% if cat_blocks %}
-<section class="home-category-scrolls" aria-label="Posts by category">
+<section class="home-category-feeds" aria-label="Posts by category">
   {% for block in cat_blocks %}
     {% assign slug = block.slug %}
     {% assign cat_posts = '' | split: '' %}
@@ -26,22 +26,19 @@
     {% endfor %}
 
     <div class="home-cat-section">
-      <div class="home-cat-section-heading">
-        <h2 class="home-cat-title">
-          <a href="{{ block.category_url | relative_url }}">{{ block.title | escape }}</a>
-        </h2>
-        <a class="home-cat-more" href="{{ block.category_url | relative_url }}">Full list</a>
-      </div>
+      <h2 class="home-cat-title">
+        <a href="{{ block.category_url | relative_url }}">{{ block.title | escape }}</a>
+      </h2>
 
       {% if cat_posts.size > 0 %}
-        <div class="home-cat-scroll" tabindex="0">
-          <ul class="home-scroll-list">
+        <div class="home-cat-feed">
+          <ul class="home-feed-list">
             {% for post in cat_posts %}
-              <li class="home-scroll-item{% if post_layout == 'project_post' %} home-scroll-item--project{% endif %}">
+              <li class="home-feed-item{% if post_layout == 'project_post' %} home-feed-item--project{% endif %}">
                 {% if post_layout == 'project_post' %}
                   {% assign preview_src = post.preview_image | default: post.image %}
                   {% if preview_src %}
-                    <a class="home-scroll-preview" href="{{ post.url | relative_url }}" aria-hidden="true" tabindex="-1">
+                    <a class="home-feed-preview" href="{{ post.url | relative_url }}" aria-hidden="true" tabindex="-1">
                       <img
                         src="{{ preview_src | relative_url }}"
                         alt=""
@@ -52,11 +49,11 @@
                     </a>
                   {% endif %}
                 {% endif %}
-                <div class="home-scroll-item-body">
-                  <a class="home-scroll-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-                  <span class="home-scroll-meta">{{ post.date | date: '%B %d, %Y' }}</span>
+                <div class="home-feed-item-body">
+                  <a class="home-feed-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+                  <span class="home-feed-meta">{{ post.date | date: '%B %d, %Y' }}</span>
                   {% if post.excerpt %}
-                    <div class="home-scroll-excerpt">{{ post.excerpt }}</div>
+                    <div class="home-feed-excerpt">{{ post.excerpt }}</div>
                   {% endif %}
                 </div>
               </li>
