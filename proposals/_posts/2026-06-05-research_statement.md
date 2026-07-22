@@ -1,6 +1,6 @@
 ---
 layout: research_post
-title: "Computational Modeling in the Large Data Limit"
+title: "Physiological Modeling in the Large Data Limit"
 date: 2026-06-05
 tags: [proposal]
 pdf: /assets/documents/research_statement.pdf
